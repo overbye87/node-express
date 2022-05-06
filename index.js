@@ -4,8 +4,9 @@ import chalk from 'chalk'
 
 import reqTime from './middlewares/reqTime.js'
 import root from './routes/root.js'
+import { config } from './config.js'
 
-const PORT = process.env.PORT ?? 4000
+const PORT = process.env.PORT ?? config.port
 const app = express()
 
 app.use(cors())

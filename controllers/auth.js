@@ -1,19 +1,19 @@
 import jwt from 'jsonwebtoken'
-const secret = 'secret_key_string'
+import { config } from '../config.js'
 
 const auth = (req, res) => {
   console.log(req.body)
   if (
-    req.body.name === 'username' &&
-    req.body.password === 'password'
+    req.body.username === 'username'
+    && req.body.password === 'password'
     ) {
     res.json({
       status: true,
       name: 'John Doe',
-      token: jwt.sign({ id: 1 }, secret)
+      token: jwt.sign({ id: 1 }, config.sekretKey)
     })
   } else {
-    res.status(401).json({ status: false})
+    res.status(401).json({ status: false, message: 'Pair login/password is incorrect'})
   }
 
 }
