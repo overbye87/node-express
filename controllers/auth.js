@@ -2,14 +2,14 @@ import jwt from 'jsonwebtoken'
 import { config } from '../config.js'
 
 const auth = (req, res) => {
-  console.log(req.body)
+  console.log('/auth', req.body)
   if (
     req.body.username === 'username'
     && req.body.password === 'password'
     ) {
     res.json({
       status: true,
-      name: 'John Doe',
+      user: { id: 1, name: 'John Doe' },
       token: jwt.sign({ id: 1 }, config.sekretKey)
     })
   } else {
